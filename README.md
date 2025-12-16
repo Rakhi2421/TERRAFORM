@@ -14,13 +14,22 @@ resource "<provider>_<resourceType>" "variable name" {
     parameters
 }
 ```
-
+Here resource type = provider_resourceType
+ -   resource name = variable name
 
 ## In Terraform Config file add the below code in it.
 
 ```bash
+
+# Tags are key value pairs in aws.
+# syntax-  mykey: "myvalue"
+
 resource "aws_vpc" "learning-vpc" {
-    cidr_block = "10.0.0.0/16"  
+    cidr_block = "10.0.0.0/16"
+    tags = {
+        Name: "development"
+        vpc_env: "dev"
+    }
 }
 
 ## Creating a resource for a non-existing resource, in terraform we can reference the resources in the same context.
@@ -31,6 +40,14 @@ resource "aws_subnet" "learning-subnet" {
     availability_zone = "eu-west-3a"  
 }
 ```
+
+If you want to delete a specific resource from the terraform config file, we have 2 methods:
+1. remove the specific resource data from configuration file
+2. use the following command:
+   ```bash
+   # Syntax: terraform destroy -target resource type.resource name
+   terraform destroy -target aws_subnet.learning-subnet
+   ```
 Then go to the path of the file in terminal and execute the below commands.
 
 ```bash
