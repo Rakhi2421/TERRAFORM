@@ -1,0 +1,7 @@
+vpc_cidr_blocks = "10.0.0.0/16"
+subnet_cidr_blocks = "10.0.10.0/24"
+env-prefixid = "dev"
+myip = "192.18.20.21/32"
+availability_zone = "eu-west-3a"
+instancetype = "t2.micro"
+public_key_location = "/users/rakesh/publickeylocation"
